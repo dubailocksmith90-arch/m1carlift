@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calendar, Car, Briefcase, ChevronRight } from "lucide-react";
+import { Calendar, Car, Briefcase, ChevronRight, BookOpen } from "lucide-react";
 
 const services = [
   {
@@ -9,7 +9,7 @@ const services = [
       "Lock in a regular morning/evening slot between Sharjah and Dubai. Monthly passes available for consistent, worry-free commuting.",
     href: "/services#daily-commute",
     tag: "Most Popular",
-    blogLink: { href: "/blog/advantages-car-lift-service", label: "Read: Advantages of Car Lift Service →" },
+    blogLink: { href: "/blog/advantages-car-lift-service", label: "Advantages of Car Lift →" },
   },
   {
     icon: Car,
@@ -18,7 +18,7 @@ const services = [
       "Need a single ride on a specific date? Book a one-time car lift to any major Dubai destination at a transparent, fixed fare.",
     href: "/services#one-time",
     tag: null,
-    blogLink: { href: "/blog/tips-comfortable-commute-sharjah-dubai", label: "Read: Tips for a Comfortable Commute →" },
+    blogLink: { href: "/blog/tips-comfortable-commute-sharjah-dubai", label: "Commute Tips →" },
   },
   {
     icon: Briefcase,
@@ -27,7 +27,7 @@ const services = [
       "Regular transport for your team? We offer corporate car lift packages for companies based in Sharjah with employees commuting to Dubai.",
     href: "/services#corporate",
     tag: "For Teams",
-    blogLink: { href: "/blog/environmental-social-benefits-car-lift-sharjah-dubai", label: "Read: Environmental & Social Benefits →" },
+    blogLink: { href: "/blog/environmental-social-benefits-car-lift-sharjah-dubai", label: "Environmental Benefits →" },
   },
 ];
 
@@ -48,30 +48,36 @@ export default function ServicesGrid() {
         {services.map((service) => {
           const Icon = service.icon;
           return (
-            <Link
+            <div
               key={service.title}
-              href={service.href}
-              className="group relative bg-[#151517] rounded-2xl p-6 border border-[#2A2A2E] hover:border-[#C9A227]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,162,39,0.1)]"
+              className="relative bg-[#151517] rounded-2xl p-6 border border-[#2A2A2E] hover:border-[#C9A227]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,162,39,0.1)] flex flex-col"
             >
               {service.tag && (
                 <span className="absolute top-4 right-4 text-xs bg-[#C9A227]/15 text-[#C9A227] border border-[#C9A227]/30 px-2 py-0.5 rounded-full font-medium">
                   {service.tag}
                 </span>
               )}
-              <div className="w-12 h-12 rounded-xl bg-[#1E1E21] border border-[#2A2A2E] group-hover:border-[#C9A227]/40 flex items-center justify-center mb-5 transition-colors duration-300">
+              <div className="w-12 h-12 rounded-xl bg-[#1E1E21] border border-[#2A2A2E] flex items-center justify-center mb-5">
                 <Icon size={22} className="text-[#C9A227]" />
               </div>
               <h3 className="text-lg font-bold text-[#EDEDED] mb-2">{service.title}</h3>
-              <p className="text-[#8A8A95] text-sm leading-relaxed mb-4">{service.description}</p>
-              <p className="text-xs text-[#C9A227]/70 hover:text-[#C9A227] mb-4 transition-colors">
-                <Link href={service.blogLink.href} onClick={(e) => e.stopPropagation()} className="hover:underline underline-offset-2">
+              <p className="text-[#8A8A95] text-sm leading-relaxed mb-5 flex-1">{service.description}</p>
+              <div className="flex items-center justify-between gap-3 mt-auto">
+                <Link
+                  href={service.href}
+                  className="inline-flex items-center gap-1 text-[#C9A227] text-sm font-medium hover:text-[#E8C04A] transition-colors"
+                >
+                  Learn more <ChevronRight size={14} />
+                </Link>
+                <Link
+                  href={service.blogLink.href}
+                  className="inline-flex items-center gap-1 text-[#8A8A95] hover:text-[#C9A227] text-xs transition-colors"
+                >
+                  <BookOpen size={11} />
                   {service.blogLink.label}
                 </Link>
-              </p>
-              <div className="flex items-center gap-1 text-[#C9A227] text-sm font-medium">
-                Learn more <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>
