@@ -15,7 +15,7 @@ User-agent: Claude-Web
 Allow: /
 
 # Host
-Host: https://www.m1carlift.com
+Host: https://m1carlift.com
 
 # Sitemaps
-Sitemap: https://www.m1carlift.com/sitemap.xml
+Sitemap: https://m1carlift.com/sitemap.xml

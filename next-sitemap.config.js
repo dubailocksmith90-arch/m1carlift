@@ -9,14 +9,16 @@ module.exports = {
       { userAgent: "CCBot", allow: "/" },
       { userAgent: "Claude-Web", allow: "/" },
     ],
-    additionalSitemaps: [
-      "https://m1carlift.com/sitemap.xml",
-    ],
   },
   changefreq: "weekly",
   priority: 0.7,
   sitemapSize: 5000,
-  exclude: ["/api/*"],
+  exclude: [
+    "/api/*",
+    "/apple-icon.png",
+    "/manifest.webmanifest",
+    "/favicon.ico",
+  ],
   transform: async (config, path) => {
     const priorities = {
       "/": 1.0,
