@@ -26,7 +26,7 @@ export const BUSINESS = {
   // Plus Code is the most reliable navigation link in UAE
   mapsLink: "https://maps.google.com/?q=673C%2BW8+Dubai",
   url: "https://m1carlift.com",
-  logo: "/images/m1carlift-logo.png",
+  logo: "/android-chrome-512x512.png",
 } as const;
 
 export const ROUTES = [
