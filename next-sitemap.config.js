@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || "https://www.m1carlift.com",
+  siteUrl: process.env.SITE_URL || "https://m1carlift.com",
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
@@ -9,9 +9,28 @@ module.exports = {
       { userAgent: "CCBot", allow: "/" },
       { userAgent: "Claude-Web", allow: "/" },
     ],
+    additionalSitemaps: [
+      "https://m1carlift.com/sitemap.xml",
+    ],
   },
   changefreq: "weekly",
   priority: 0.7,
   sitemapSize: 5000,
   exclude: ["/api/*"],
+  transform: async (config, path) => {
+    const priorities = {
+      "/": 1.0,
+      "/services": 0.9,
+      "/blog": 0.8,
+      "/contact": 0.8,
+      "/about": 0.7,
+    };
+    const priority = priorities[path] ?? (path.startsWith("/blog/") ? 0.6 : 0.7);
+    return {
+      loc: path,
+      changefreq: config.changefreq,
+      priority,
+      lastmod: new Date().toISOString(),
+    };
+  },
 };

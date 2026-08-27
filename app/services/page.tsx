@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Car, Briefcase, MapPin, CheckCircle2, Phone, MessageCircle } from "lucide-react";
+import { Calendar, Car, Briefcase, MapPin, CheckCircle2, Phone, MessageCircle, BookOpen } from "lucide-react";
 import { BUSINESS, ROUTES } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -33,6 +33,7 @@ const services = [
     ],
     cta: "Get Monthly Rate",
     forWho: "Best for: Office workers, corporate employees, daily commuters",
+    blogLink: { href: "/blog/advantages-car-lift-service", label: "Read our guide: Advantages of Car Lift Service vs Driving Alone" },
   },
   {
     id: "one-time",
@@ -51,6 +52,7 @@ const services = [
     ],
     cta: "Book a One-Time Ride",
     forWho: "Best for: Occasional visitors, trial bookings, flexible workers",
+    blogLink: { href: "/blog/tips-comfortable-commute-sharjah-dubai", label: "Read our guide: Tips for a Comfortable Commute" },
   },
   {
     id: "corporate",
@@ -69,6 +71,7 @@ const services = [
     ],
     cta: "Enquire About Corporate Rates",
     forWho: "Best for: SMEs, startups, companies based in Sharjah free zones",
+    blogLink: { href: "/blog/environmental-social-benefits-car-lift-sharjah-dubai", label: "Read our guide: Environmental & Social Benefits of Car Sharing" },
   },
 ];
 
@@ -90,12 +93,55 @@ export default function ServicesPage() {
     ],
   };
 
+  const serviceSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Daily Commute Car Lift Pass — Sharjah to Dubai",
+      description:
+        "Fixed morning and evening car lift slots between Sharjah and Dubai, available on a weekly or monthly basis. Priority seat reservation, same driver, WhatsApp schedule updates.",
+      provider: { "@type": "LocalBusiness", name: BUSINESS.name, url: BUSINESS.url },
+      areaServed: ["Sharjah", "Dubai"],
+      serviceType: "Car Lift / Daily Commute Transport",
+      url: `${BUSINESS.url}/services#daily-commute`,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "One-Time Car Lift Booking — Sharjah to Dubai",
+      description:
+        "Single-trip car lift from Sharjah to any major Dubai destination. No subscription required. Cash or bank transfer payment. Confirmation within 1 hour via WhatsApp.",
+      provider: { "@type": "LocalBusiness", name: BUSINESS.name, url: BUSINESS.url },
+      areaServed: ["Sharjah", "Dubai"],
+      serviceType: "Car Lift / One-Time Ride",
+      url: `${BUSINESS.url}/services#one-time`,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: "Corporate Car Lift Accounts — Sharjah to Dubai",
+      description:
+        "Group car lift packages for companies with employees commuting from Sharjah to Dubai. Multiple pick-up points, monthly invoicing, scalable from 2 to 20+ employees.",
+      provider: { "@type": "LocalBusiness", name: BUSINESS.name, url: BUSINESS.url },
+      areaServed: ["Sharjah", "Dubai"],
+      serviceType: "Corporate Transport / Group Car Lift",
+      url: `${BUSINESS.url}/services#corporate`,
+    },
+  ];
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
+      {serviceSchemas.map((s, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
+        />
+      ))}
 
       {/* Page Header */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
@@ -164,15 +210,24 @@ export default function ServicesPage() {
                       <h2 className="text-2xl font-bold text-[#EDEDED] mb-3">{svc.title}</h2>
                       <p className="text-[#8A8A95] text-base leading-relaxed mb-6">{svc.description}</p>
                       <p className="text-xs text-[#C9A227] font-medium mb-4">{svc.forWho}</p>
-                      <a
-                        href={BUSINESS.whatsapp}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#C9A227] hover:bg-[#E8C04A] text-[#0A0A0B] font-bold text-sm px-6 py-3 rounded-lg transition-all duration-200"
-                      >
-                        <MessageCircle size={15} />
-                        {svc.cta}
-                      </a>
+                      <div className="flex flex-wrap items-center gap-4">
+                        <a
+                          href={BUSINESS.whatsapp}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-[#C9A227] hover:bg-[#E8C04A] text-[#0A0A0B] font-bold text-sm px-6 py-3 rounded-lg transition-all duration-200"
+                        >
+                          <MessageCircle size={15} />
+                          {svc.cta}
+                        </a>
+                        <Link
+                          href={svc.blogLink.href}
+                          className="inline-flex items-center gap-1.5 text-[#8A8A95] hover:text-[#C9A227] text-xs transition-colors"
+                        >
+                          <BookOpen size={12} />
+                          {svc.blogLink.label}
+                        </Link>
+                      </div>
                     </div>
                     <div className="bg-[#0A0A0B] rounded-xl p-6 border border-[#2A2A2E]">
                       <h3 className="text-[#EDEDED] font-semibold text-sm mb-4 uppercase tracking-wider">What&apos;s Included</h3>

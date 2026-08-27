@@ -62,6 +62,18 @@ export default function HomePage() {
     serviceType: "Car Lift / Private Transport",
     currenciesAccepted: "AED",
     paymentAccepted: "Cash, Bank Transfer",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: BUSINESS.phone,
+      contactType: "customer service",
+      areaServed: "AE",
+      availableLanguage: ["English", "Arabic"],
+    },
+    hasMap: BUSINESS.mapsLink,
+    sameAs: [
+      BUSINESS.whatsapp,
+      "https://maps.google.com/?cid=5523547756536358254",
+    ],
   };
 
   const faqSchema = {

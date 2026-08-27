@@ -67,19 +67,33 @@ export default async function BlogPostPage({ params }: Props) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.seoDescription,
+    articleSection: post.category,
+    wordCount: post.wordCount,
+    image: {
+      "@type": "ImageObject",
+      url: `${BUSINESS.url}/images/og-image.jpg`,
+      width: 1200,
+      height: 630,
+    },
     author: {
       "@type": "Organization",
       name: post.author.name,
+      url: BUSINESS.url,
     },
     publisher: {
       "@type": "Organization",
       name: BUSINESS.name,
       url: BUSINESS.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${BUSINESS.url}/images/m1carlift-logo.png`,
+      },
     },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     mainEntityOfPage: `${BUSINESS.url}/blog/${post.slug}`,
     keywords: post.keywords.join(", "),
+    isPartOf: { "@type": "Blog", name: `${BUSINESS.name} Blog`, url: `${BUSINESS.url}/blog` },
   };
 
   return (

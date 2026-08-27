@@ -17,6 +17,11 @@ const footerNav = {
     { href: "/services#corporate", label: "Corporate Accounts" },
     { href: "/services#routes", label: "Route Coverage" },
   ],
+  blog: [
+    { href: "/blog/advantages-car-lift-service", label: "Advantages of Car Lift Service" },
+    { href: "/blog/environmental-social-benefits-car-lift-sharjah-dubai", label: "Environmental & Social Benefits" },
+    { href: "/blog/tips-comfortable-commute-sharjah-dubai", label: "Tips for a Comfortable Commute" },
+  ],
   legal: [
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms of Service" },
@@ -29,7 +34,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#151517] border-t border-[#2A2A2E]" aria-label="Site footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
           {/* Brand & Contact */}
           <div className="lg:col-span-1">
@@ -102,6 +107,30 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Blog Links */}
+          <div>
+            <h3 className="text-[#EDEDED] font-semibold text-sm uppercase tracking-wider mb-4">From the Blog</h3>
+            <ul className="flex flex-col gap-2">
+              {footerNav.blog.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-[#8A8A95] hover:text-[#C9A227] text-sm transition-colors leading-snug">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="https://www.google.com/maps/place/M1+Car+Lift/@25.2048541,55.2682079,17z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#8A8A95] hover:text-[#C9A227] text-sm transition-colors"
+                >
+                  ★ Leave a Google Review
+                </a>
+              </li>
             </ul>
           </div>
 

@@ -6,6 +6,7 @@ export interface Post {
   readingTime: string;
   publishedAt: string;
   updatedAt: string;
+  wordCount: number;
   author: {
     name: string;
     bio: string;
@@ -25,6 +26,7 @@ export const allPosts: Post[] = [
     readingTime: "6 min read",
     publishedAt: "2024-03-15",
     updatedAt: "2024-11-01",
+    wordCount: 720,
     author: {
       name: "M1 Car Lift Editorial Team",
       bio: "The M1 Car Lift team writes practical guides for UAE commuters based on daily operational experience serving the Sharjah–Dubai corridor.",
@@ -47,6 +49,7 @@ export const allPosts: Post[] = [
     readingTime: "7 min read",
     publishedAt: "2024-04-10",
     updatedAt: "2024-11-15",
+    wordCount: 860,
     author: {
       name: "M1 Car Lift Editorial Team",
       bio: "The M1 Car Lift team writes practical guides for UAE commuters based on daily operational experience serving the Sharjah–Dubai corridor.",
@@ -69,6 +72,7 @@ export const allPosts: Post[] = [
     readingTime: "8 min read",
     publishedAt: "2024-05-05",
     updatedAt: "2024-12-01",
+    wordCount: 950,
     author: {
       name: "M1 Car Lift Editorial Team",
       bio: "The M1 Car Lift team writes practical guides for UAE commuters based on daily operational experience serving the Sharjah–Dubai corridor.",

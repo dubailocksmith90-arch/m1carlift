@@ -9,6 +9,7 @@ const services = [
       "Lock in a regular morning/evening slot between Sharjah and Dubai. Monthly passes available for consistent, worry-free commuting.",
     href: "/services#daily-commute",
     tag: "Most Popular",
+    blogLink: { href: "/blog/advantages-car-lift-service", label: "Read: Advantages of Car Lift Service →" },
   },
   {
     icon: Car,
@@ -17,6 +18,7 @@ const services = [
       "Need a single ride on a specific date? Book a one-time car lift to any major Dubai destination at a transparent, fixed fare.",
     href: "/services#one-time",
     tag: null,
+    blogLink: { href: "/blog/tips-comfortable-commute-sharjah-dubai", label: "Read: Tips for a Comfortable Commute →" },
   },
   {
     icon: Briefcase,
@@ -25,6 +27,7 @@ const services = [
       "Regular transport for your team? We offer corporate car lift packages for companies based in Sharjah with employees commuting to Dubai.",
     href: "/services#corporate",
     tag: "For Teams",
+    blogLink: { href: "/blog/environmental-social-benefits-car-lift-sharjah-dubai", label: "Read: Environmental & Social Benefits →" },
   },
 ];
 
@@ -59,7 +62,12 @@ export default function ServicesGrid() {
                 <Icon size={22} className="text-[#C9A227]" />
               </div>
               <h3 className="text-lg font-bold text-[#EDEDED] mb-2">{service.title}</h3>
-              <p className="text-[#8A8A95] text-sm leading-relaxed mb-5">{service.description}</p>
+              <p className="text-[#8A8A95] text-sm leading-relaxed mb-4">{service.description}</p>
+              <p className="text-xs text-[#C9A227]/70 hover:text-[#C9A227] mb-4 transition-colors">
+                <Link href={service.blogLink.href} onClick={(e) => e.stopPropagation()} className="hover:underline underline-offset-2">
+                  {service.blogLink.label}
+                </Link>
+              </p>
               <div className="flex items-center gap-1 text-[#C9A227] text-sm font-medium">
                 Learn more <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </div>

@@ -73,13 +73,21 @@ export default function RoutesCoverage() {
         </div>
       </div>
 
-      <p className="text-center text-[#8A8A95] text-sm mt-6">
-        Don&apos;t see your area?{" "}
-        <Link href="/contact" className="text-[#C9A227] hover:underline">
-          Contact us
-        </Link>{" "}
-        — we may be able to accommodate custom pick-up points.
-      </p>
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8 text-sm">
+        <Link
+          href="/services#routes"
+          className="inline-flex items-center gap-1.5 bg-[#C9A227] hover:bg-[#E8C04A] text-[#0A0A0B] font-bold px-5 py-2.5 rounded-lg transition-colors duration-200"
+        >
+          View All Service Routes →
+        </Link>
+        <span className="text-[#8A8A95]">
+          Don&apos;t see your area?{" "}
+          <Link href="/contact" className="text-[#C9A227] hover:underline">
+            Contact us
+          </Link>{" "}
+          — we accommodate custom routes.
+        </span>
+      </div>
     </section>
   );
 }
