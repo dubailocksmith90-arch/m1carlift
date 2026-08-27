@@ -1,0 +1,21 @@
+# *
+User-agent: *
+Allow: /
+
+# GPTBot
+User-agent: GPTBot
+Allow: /
+
+# CCBot
+User-agent: CCBot
+Allow: /
+
+# Claude-Web
+User-agent: Claude-Web
+Allow: /
+
+# Host
+Host: https://www.m1carlift.com
+
+# Sitemaps
+Sitemap: https://www.m1carlift.com/sitemap.xml
