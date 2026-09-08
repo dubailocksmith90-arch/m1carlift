@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
@@ -27,6 +27,13 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0B" },
+    { media: "(prefers-color-scheme: light)", color: "#C9A227" },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
   title: {
@@ -53,6 +60,17 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "jtCBkFiJmPc1X2HC7k1D3WSjZLr24iGQndzwS9jAHgs",
+  },
+  // Explicit icon declarations — generates <link rel="icon" sizes="..."> in <head>
+  // app/apple-icon.png file convention handles apple-touch-icon automatically
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    shortcut: "/favicon.ico",
   },
   openGraph: {
     type: "website",
