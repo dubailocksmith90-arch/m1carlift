@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: "What areas does M1 Car Lift cover?",
-    a: "We pick up from major Sharjah areas including Al Nahda, Al Qasimia, Muwaileh, Al Taawun, and City Centre. Drop-offs cover all key Dubai destinations: Deira, Downtown Dubai, Business Bay, DIFC, Sheikh Zayed Road, Al Barsha, TECOM, Internet City, Media City, JLT, Dubai Marina, and all SZR Metro stations.",
+    a: "M1 Car Lift picks up from 7 Sharjah locations: Butina, Rolla, Al Qasimiya, Abu Shagara, Al Wahda, Al Khan, and Al Nahda. Drop-offs cover 8 major Dubai destinations: Jumeirah Lake Towers (JLT), Dubai Media City, TECOM, Al Barsha, Business Bay, Dubai Internet City, Jumeirah Beach Residence (JBR), and Dubai Marina. Custom pickup and drop-off points can also be arranged.",
   },
   {
     q: "Is car lift service safe?",
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "What time do car lift services operate?",
-    a: "M1 Car Lift operates Monday to Saturday, 08:00 AM to 10:00 PM. Morning commute slots (around 7–9 AM) and evening return slots (5–8 PM) are most in demand — book early to secure your preferred time.",
+    a: "M1 Car Lift runs fixed daily departure slots Monday to Saturday. Morning trips from Sharjah depart at 08:00 AM, 09:00 AM, and 10:00 AM. Evening return trips from Dubai depart at 05:00 PM, 06:00 PM, and 07:00 PM. Book your preferred slot on WhatsApp to secure your seat.",
   },
   {
     q: "What if I need to cancel or reschedule my booking?",

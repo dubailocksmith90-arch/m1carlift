@@ -23,11 +23,14 @@ module.exports = {
     const priorities = {
       "/": 1.0,
       "/services": 0.9,
+      "/routes": 0.9,
       "/blog": 0.8,
       "/contact": 0.8,
       "/about": 0.7,
     };
-    const priority = priorities[path] ?? (path.startsWith("/blog/") ? 0.6 : 0.7);
+    const priority =
+      priorities[path] ??
+      (path.startsWith("/blog/") ? 0.6 : path.startsWith("/routes/") ? 0.8 : 0.7);
     return {
       loc: path,
       changefreq: config.changefreq,

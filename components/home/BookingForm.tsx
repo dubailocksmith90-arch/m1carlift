@@ -9,7 +9,7 @@ import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
-import { ROUTES } from "@/lib/utils";
+import { PICKUP_POINTS, DROPOFF_POINTS } from "@/lib/routes";
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -27,18 +27,17 @@ const bookingSchema = z.object({
 
 type BookingFormData = z.infer<typeof bookingSchema>;
 
-const routeOptions = ROUTES.map((r) => ({ value: r, label: r }));
+const pickupOptions = PICKUP_POINTS.map((p) => ({ value: p.name, label: `${p.name}, Sharjah` }));
+const dropoffOptions = DROPOFF_POINTS.map((d) => ({ value: d.fullName, label: `${d.fullName}, Dubai` }));
 
 const timeOptions = [
-  "06:00 AM", "06:30 AM", "07:00 AM", "07:30 AM",
-  "08:00 AM", "08:30 AM", "09:00 AM", "09:30 AM",
-  "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM",
-  "12:00 PM", "12:30 PM", "01:00 PM", "01:30 PM",
-  "02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM",
-  "04:00 PM", "04:30 PM", "05:00 PM", "05:30 PM",
-  "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM",
-  "08:00 PM", "08:30 PM", "09:00 PM", "09:30 PM",
-].map((t) => ({ value: t, label: t }));
+  { value: "08:00 AM", label: "Morning — 08:00 AM" },
+  { value: "09:00 AM", label: "Morning — 09:00 AM" },
+  { value: "10:00 AM", label: "Morning — 10:00 AM" },
+  { value: "05:00 PM", label: "Evening — 05:00 PM" },
+  { value: "06:00 PM", label: "Evening — 06:00 PM" },
+  { value: "07:00 PM", label: "Evening — 07:00 PM" },
+];
 
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -139,19 +138,19 @@ export default function BookingForm() {
       />
       <Select
         id="pickup"
-        label="Pick-up Location"
-        placeholder="Select area"
+        label="Pick-up Location (Sharjah)"
+        placeholder="Select Sharjah area"
         required
-        options={routeOptions}
+        options={pickupOptions}
         error={errors.pickup?.message}
         {...register("pickup")}
       />
       <Select
         id="dropoff"
-        label="Drop-off Location"
-        placeholder="Select area"
+        label="Drop-off Location (Dubai)"
+        placeholder="Select Dubai destination"
         required
-        options={routeOptions}
+        options={dropoffOptions}
         error={errors.dropoff?.message}
         {...register("dropoff")}
       />

@@ -1,30 +1,6 @@
 import Link from "next/link";
-import { MapPin, ArrowRight } from "lucide-react";
-import { ROUTES } from "@/lib/utils";
-
-const sharjahZones = [
-  "Sharjah City Centre",
-  "Al Nahda (Sharjah)",
-  "Al Qasimia",
-  "Muwaileh",
-  "Al Taawun",
-];
-
-const dubaiZones = [
-  "Al Mamzar",
-  "Deira",
-  "Bur Dubai",
-  "Downtown Dubai",
-  "Business Bay",
-  "DIFC",
-  "Sheikh Zayed Road",
-  "Al Barsha",
-  "Tecom / Internet City",
-  "Media City / Studio City",
-  "JLT (Jumeirah Lake Towers)",
-  "JBR / Dubai Marina",
-  "All SZR Metro Stations",
-];
+import { MapPin, Clock, ArrowRight } from "lucide-react";
+import { PICKUP_POINTS, DROPOFF_POINTS } from "@/lib/routes";
 
 export default function RoutesCoverage() {
   return (
@@ -35,38 +11,69 @@ export default function RoutesCoverage() {
           Every Route Between Sharjah and Dubai
         </h2>
         <p className="text-[#8A8A95] max-w-2xl mx-auto">
-          M1 Car Lift picks up from major Sharjah residential and commercial areas and drops off across Dubai — from Deira to Dubai Marina.
+          M1 Car Lift picks up from 7 Sharjah residential areas and drops off across 8 major Dubai business and residential zones — daily, Monday to Saturday.
         </p>
       </div>
 
+      {/* Schedule strip */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-8 max-w-xl mx-auto">
+        <div className="flex-1 bg-[#151517] border border-[#2A2A2E] rounded-xl p-4 text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <Clock size={14} className="text-[#C9A227]" />
+            <span className="text-[#C9A227] text-xs font-semibold uppercase tracking-wider">Morning Departures</span>
+          </div>
+          <p className="text-[#EDEDED] text-sm font-medium">08:00 · 09:00 · 10:00 AM</p>
+          <p className="text-[#8A8A95] text-xs mt-1">Sharjah → Dubai</p>
+        </div>
+        <div className="flex-1 bg-[#151517] border border-[#2A2A2E] rounded-xl p-4 text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <Clock size={14} className="text-[#C9A227]" />
+            <span className="text-[#C9A227] text-xs font-semibold uppercase tracking-wider">Evening Returns</span>
+          </div>
+          <p className="text-[#EDEDED] text-sm font-medium">05:00 · 06:00 · 07:00 PM</p>
+          <p className="text-[#8A8A95] text-xs mt-1">Dubai → Sharjah</p>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Sharjah Side */}
+        {/* Sharjah Pickup Points */}
         <div className="bg-[#151517] rounded-2xl p-6 border border-[#2A2A2E]">
           <div className="flex items-center gap-2 mb-5">
             <MapPin size={18} className="text-[#C9A227]" />
-            <h3 className="text-[#EDEDED] font-bold text-lg">Sharjah Pick-up Zones</h3>
+            <h3 className="text-[#EDEDED] font-bold text-lg">Sharjah Pick-up Points</h3>
           </div>
-          <ul className="flex flex-col gap-2">
-            {sharjahZones.map((zone) => (
-              <li key={zone} className="flex items-center gap-2 text-sm text-[#8A8A95]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] shrink-0" />
-                {zone}
+          <ul className="flex flex-col gap-2.5">
+            {PICKUP_POINTS.map((point) => (
+              <li key={point.slug}>
+                <Link
+                  href={`/routes?from=${point.slug}`}
+                  className="flex items-center gap-2 text-sm text-[#8A8A95] hover:text-[#C9A227] transition-colors group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] shrink-0" />
+                  {point.name}
+                  <ArrowRight size={12} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Dubai Side */}
+        {/* Dubai Drop-off Points */}
         <div className="bg-[#151517] rounded-2xl p-6 border border-[#2A2A2E]">
           <div className="flex items-center gap-2 mb-5">
             <MapPin size={18} className="text-[#C9A227]" />
-            <h3 className="text-[#EDEDED] font-bold text-lg">Dubai Drop-off Zones</h3>
+            <h3 className="text-[#EDEDED] font-bold text-lg">Dubai Drop-off Points</h3>
           </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {dubaiZones.map((zone) => (
-              <li key={zone} className="flex items-center gap-2 text-sm text-[#8A8A95]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] shrink-0" />
-                {zone}
+          <ul className="grid grid-cols-2 gap-2.5">
+            {DROPOFF_POINTS.map((point) => (
+              <li key={point.slug}>
+                <Link
+                  href={`/routes?to=${point.slug}`}
+                  className="flex items-center gap-2 text-sm text-[#8A8A95] hover:text-[#C9A227] transition-colors group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A227] shrink-0" />
+                  {point.fullName}
+                </Link>
               </li>
             ))}
           </ul>
@@ -75,10 +82,10 @@ export default function RoutesCoverage() {
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8 text-sm">
         <Link
-          href="/services#routes"
+          href="/routes"
           className="inline-flex items-center gap-1.5 bg-[#C9A227] hover:bg-[#E8C04A] text-[#0A0A0B] font-bold px-5 py-2.5 rounded-lg transition-colors duration-200"
         >
-          View All Service Routes →
+          Browse All 56 Routes <ArrowRight size={14} />
         </Link>
         <span className="text-[#8A8A95]">
           Don&apos;t see your area?{" "}
