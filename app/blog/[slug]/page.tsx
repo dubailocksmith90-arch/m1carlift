@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Clock, Calendar, ArrowLeft, ArrowRight } from "lucide-react";
@@ -86,7 +87,9 @@ export default async function BlogPostPage({ params }: Props) {
       url: BUSINESS.url,
       logo: {
         "@type": "ImageObject",
-        url: `${BUSINESS.url}/images/m1carlift-logo.png`,
+        url: `${BUSINESS.url}${BUSINESS.logo}`,
+        width: 591,
+        height: 611,
       },
     },
     datePublished: post.publishedAt,
@@ -131,9 +134,13 @@ export default async function BlogPostPage({ params }: Props) {
           </h1>
 
           <div className="flex items-center gap-4 pb-8 border-b border-[#2A2A2E]">
-            <div className="w-10 h-10 rounded-full bg-[#1E1E21] border border-[#C9A227]/30 flex items-center justify-center text-[#C9A227] font-bold text-sm">
-              M1
-            </div>
+            <Image
+              src="/images/m1-affordable-carlift-logo-bus-illustration-uae.webp"
+              alt="M1 Car Lift"
+              width={40}
+              height={41}
+              className="rounded-full border border-[#C9A227]/30"
+            />
             <div>
               <p className="text-[#EDEDED] text-sm font-medium">{post.author.name}</p>
               <div className="flex items-center gap-3 text-xs text-[#8A8A95]">

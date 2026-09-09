@@ -24,7 +24,7 @@ const contactDetails = [
     icon: MessageCircle,
     label: "WhatsApp",
     value: "Chat on WhatsApp",
-    href: BUSINESS.whatsapp,
+    href: BUSINESS.whatsappBooking,
     subtext: "Fastest response — usually under 1 hour",
     external: true,
   },

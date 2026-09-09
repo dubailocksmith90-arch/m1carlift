@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, Clock, MapPin, MessageCircle } from "lucide-react";
 import { BUSINESS } from "@/lib/utils";
@@ -38,10 +39,14 @@ export default function Footer() {
 
           {/* Brand & Contact */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-[#C9A227] flex items-center justify-center font-bold text-[#0A0A0B] text-sm">
-                M1
-              </div>
+            <Link href="/" className="flex items-center gap-2 mb-4" aria-label="M1 Car Lift — Home">
+              <Image
+                src="/images/m1-affordable-carlift-logo-bus-illustration-uae.webp"
+                alt="M1 Car Lift logo"
+                width={39}
+                height={40}
+                className="rounded-md"
+              />
               <span className="font-bold text-lg text-[#EDEDED] tracking-tight">Car Lift</span>
             </Link>
             <p className="text-[#8A8A95] text-sm leading-relaxed mb-6">
@@ -52,7 +57,7 @@ export default function Footer() {
                 <Phone size={14} className="text-[#C9A227]" />
                 {BUSINESS.phone}
               </a>
-              <a href={BUSINESS.whatsapp} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#8A8A95] hover:text-[#C9A227] transition-colors">
+              <a href={BUSINESS.whatsappBooking} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#8A8A95] hover:text-[#C9A227] transition-colors">
                 <MessageCircle size={14} className="text-[#C9A227]" />
                 WhatsApp Us
               </a>

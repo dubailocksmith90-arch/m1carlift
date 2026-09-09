@@ -10,6 +10,7 @@ export const BUSINESS = {
   phone: "+971 56 582 8471",
   phoneHref: "tel:+971565828471",
   whatsapp: "https://wa.me/971565828471",
+  whatsappBooking: "https://wa.me/971565828471?text=Hi%2C%20I%27d%20like%20to%20book%20a%20car%20lift%20from%20Sharjah%20to%20Dubai.%20Please%20send%20me%20the%20available%20timings%20and%20pricing.",
   email: "booking@m1carlift.com",
   hours: "Monday–Saturday, 08:00 AM – 10:00 PM",
   rating: "5.0",
@@ -26,7 +27,7 @@ export const BUSINESS = {
   // Plus Code is the most reliable navigation link in UAE
   mapsLink: "https://maps.google.com/?q=673C%2BW8+Dubai",
   url: "https://m1carlift.com",
-  logo: "/android-chrome-512x512.png",
+  logo: "/images/m1-affordable-carlift-logo-bus-illustration-uae.webp",
 } as const;
 
 export const ROUTES = [

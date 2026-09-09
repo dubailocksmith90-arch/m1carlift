@@ -37,6 +37,7 @@ const config: Config = {
       animation: {
         "fade-up": "fadeUp 0.6s ease-out forwards",
         "pulse-gold": "pulseGold 2s ease-in-out infinite",
+        "pulse-green": "pulseGreen 2s ease-in-out infinite",
       },
       keyframes: {
         fadeUp: {
@@ -46,6 +47,10 @@ const config: Config = {
         pulseGold: {
           "0%, 100%": { boxShadow: "0 0 0 0 rgba(201,162,39,0.4)" },
           "50%": { boxShadow: "0 0 0 8px rgba(201,162,39,0)" },
+        },
+        pulseGreen: {
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(37,211,102,0.5)" },
+          "50%": { boxShadow: "0 0 0 10px rgba(37,211,102,0)" },
         },
       },
       borderRadius: {
