@@ -9,9 +9,12 @@ const withMDX = createMDX({
 });
 
 const nextConfig: NextConfig = {
+  // Static export for Cloudflare Pages: `npm run build` outputs to `out/`
+  output: "export",
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
-    formats: ["image/avif", "image/webp"],
+    // Required with static export; images are pre-optimized .webp already
+    unoptimized: true,
   },
 };
 

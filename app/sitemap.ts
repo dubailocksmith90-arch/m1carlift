@@ -3,6 +3,8 @@ import { BUSINESS } from "@/lib/utils";
 import { getAllRoutes } from "@/lib/routes";
 import { allPosts } from "@/lib/posts";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = BUSINESS.url;
   const today = new Date().toISOString().split("T")[0];
