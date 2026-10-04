@@ -1,0 +1,8 @@
+# Cloudflare Worker config — serves the Next.js static export (./out) as static assets.
+# Build command: npm run build
+# Deploy command: npx wrangler deploy
+name = "m1carlift"
+compatibility_date = "2026-10-04"
+
+[assets]
+directory = "./out"
